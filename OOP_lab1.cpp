@@ -2,24 +2,24 @@
 #include <cmath>
 
 class Calculation{
-    double m_x;
-    double m_y;
-    double m_z;
+    double c_x;
+    double c_y;
+    double c_z;
 public:
     void setdata(int x,int y,int z){
-        m_x = x;
-        m_y = y;
-        m_z = z;
+        c_x = x;
+        c_y = y;
+        c_z = z;
     }
     double b(){
-        return (pow(m_x, 2) + pow(m_z, 2) / pow(tan(pow(abs(m_x), 0.3)), 2)) /
-               (3 + m_x + pow(m_y, 2) / 2 + pow(m_z, 3) / 6) +
-               pow(log10(pow(m_y / m_z, 1. / 3)), 0.3);
+        return (pow(c_x, 2) + pow(c_z, 2) / pow(tan(pow(abs(c_x), 0.3)), 2)) /
+               (3 + c_x + pow(c_y, 2) / 2 + pow(c_z, 3) / 6) +
+               pow(log10(pow(c_y / c_z, 1. / 3)), 0.3);
     }
     double a(){
-        return (2* cos(pow(abs(m_x), 1. / 3)) - pow(m_x, 2) / 6) /
-        (m_z / b() + pow(sin(pow(m_y + m_z, 3)), 2)) +
-        pow(log10(pow(abs(m_z), 0.6)), 2);
+        return (2* cos(pow(abs(c_x), 1. / 3)) - pow(c_x, 2) / 6) /
+               (c_z / b() + pow(sin(pow(c_y + c_z, 3)), 2)) +
+               pow(log10(pow(abs(c_z), 0.6)), 2);
     }
 
 };
