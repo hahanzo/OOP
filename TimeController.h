@@ -11,8 +11,10 @@ private:
     int seconds;
     int minutes;
     int hours;
+    char* s;
 public:
     TimeController();
+    ~TimeController();
     void setTime(int s, int m, int h);
     int getSeconds();
     int getMinutes();

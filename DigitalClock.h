@@ -13,8 +13,10 @@ public:
     TimeController time;
     DateController date;
     int hours_al, minutes_al, seconds_al;
+    char* s;
 public:
     DigitalClock();
+    ~DigitalClock();
     int startClock();
     void inputAlarm();
     std::tuple<int, int, int> inputTime();

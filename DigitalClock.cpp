@@ -12,6 +12,11 @@ DigitalClock::DigitalClock() {
     DateController date;
     TimeController time;
     int hours_al, minutes_al, seconds_al;
+    s = new char[100];
+}
+
+DigitalClock::~DigitalClock() {
+    delete[] s;
 }
 
 void DigitalClock::inputAlarm() {

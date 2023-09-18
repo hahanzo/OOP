@@ -8,6 +8,11 @@ DateController::DateController() {
     day = 1;
     month = 1;
     year = 2023;
+    s = new char[100];
+}
+
+DateController::~DateController() {
+    delete[] s;
 }
 
 void DateController::setDate(int d, int m, int y) {

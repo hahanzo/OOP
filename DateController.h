@@ -5,14 +5,15 @@
 #ifndef UNTITLED1_DATECONTROLLER_H
 #define UNTITLED1_DATECONTROLLER_H
 
-
 class DateController {
 private:
     int day;
     int month;
     int year;
+    char* s;
 public:
     DateController();
+    ~DateController();
     void setDate(int d, int m, int y);
     int getDay();
     int getMonth();
