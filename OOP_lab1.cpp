@@ -1,6 +1,15 @@
 #include <iostream>
 #include <cmath>
 
+
+int factorial(int n){
+    if (n == 0 || n == 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+
 class Calculation{
     double c_x;
     double c_y;
@@ -13,7 +22,7 @@ public:
     }
     double b(){
         return (pow(c_x, 2) + pow(c_z, 2) / pow(tan(pow(abs(c_x), 0.3)), 2)) /
-               (3 + c_x + pow(c_y, 2) / 2 + pow(c_z, 3) / 6) +
+               (3 + c_x + pow(c_y, 2) / factorial(2) + pow(c_z, 3) / factorial(3)) +
                pow(log10(pow(c_y / c_z, 1. / 3)), 0.3);
     }
     double a(){
@@ -29,7 +38,6 @@ int main() {
     Calculation data;
     for(double i=-1;i<1;i+=0.2){
         data.setdata(i,y,z);
-        std::cout << "Calculation b:" << data.b() << std::endl;
         std::cout << "Calculation a:" << data.a() << std::endl;
     }
 }
