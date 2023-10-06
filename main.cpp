@@ -123,7 +123,7 @@ int main() {
 
         std::cout << "Всі ліки з кількістю 50:" << std::endl;
         std::vector<Medicine> find = Medicine::FindMedicine(prescription,50.0);
-        std::cout << "ddd";
+
         for(const Medicine& medicine : find){
             std::cout << medicine << std::endl;
         }
