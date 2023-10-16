@@ -11,7 +11,7 @@ public:
     Computer(const string& model, double price) : model(model), price(price) {}
 
     virtual void printInfo() {
-        cout << "Ìîäåëü: " << model << ", Ö³íà: " << price << " ãðí" << endl;
+        cout << "ÐœÐ¾Ð´ÐµÐ»ÑŒ: " << model << ", Ð¦Ñ–Ð½Ð°: " << price << " Ð³Ñ€Ð½" << endl;
     }
 
     string getModel() const {
@@ -33,7 +33,7 @@ public:
         : Computer(model, price), brand(brand), clockSpeed(clockSpeed) {}
 
     void printInfo() override {
-        cout << "Ìîäåëü: " << model << ", Ö³íà: " << price << " ãðí, Áðåíä: " << brand << ", Òàêòîâà ÷àñòîòà: " << clockSpeed << " ÃÃö" << endl;
+        cout << "ÐœÐ¾Ð´ÐµÐ»ÑŒ: " << model << ", Ð¦Ñ–Ð½Ð°: " << price << " Ð³Ñ€Ð½, Ð‘Ñ€ÐµÐ½Ð´: " << brand << ", Ð¢Ð°ÐºÑ‚Ð¾Ð²Ð° Ñ‡Ð°ÑÑ‚Ð¾Ñ‚Ð°: " << clockSpeed << " Ð“Ð“Ñ†" << endl;
     }
 
     string getBrand() const {
@@ -54,7 +54,7 @@ public:
         : Computer(model, price), capacity(capacity) {}
 
     void printInfo() override {
-        cout << "Ìîäåëü: " << model << ", Ö³íà: " << price << " ãðí, Îáñÿã: " << capacity << " Ãáàéò" << endl;
+        cout << "ÐœÐ¾Ð´ÐµÐ»ÑŒ: " << model << ", Ð¦Ñ–Ð½Ð°: " << price << " Ð³Ñ€Ð½, ÐžÐ±ÑÑÐ³: " << capacity << " Ð“Ð±Ð°Ð¹Ñ‚" << endl;
     }
 
     double getCapacity() const {
@@ -66,25 +66,25 @@ int main() {
     Processor processor("Intel i7", 1000.0, "Intel", 3.5);
     HardDisk hardDisk("WD Blue", 200.0, 1000.0);
 
-    cout << "²íôîðìàö³ÿ ïðî ïðîöåñîð:" << endl;
+    cout << "Ð†Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ñ–Ñ Ð¿Ñ€Ð¾ Ð¿Ñ€Ð¾Ñ†ÐµÑÐ¾Ñ€:" << endl;
     processor.printInfo();
 
-    cout << "²íôîðìàö³ÿ ïðî æîðñòêèé äèñê:" << endl;
+    cout << "Ð†Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ñ–Ñ Ð¿Ñ€Ð¾ Ð¶Ð¾Ñ€ÑÑ‚ÐºÐ¸Ð¹ Ð´Ð¸ÑÐº:" << endl;
     hardDisk.printInfo();
 
     ofstream outFile("computer_info.txt");
     if (outFile.is_open()) {
-        outFile << "²íôîðìàö³ÿ ïðî ïðîöåñîð:" << endl;
-        outFile << "Ìîäåëü: " << processor.getModel() << ", Ö³íà: " << processor.getPrice() << " ãðí, Áðåíä: " << processor.getBrand() << ", Òàêòîâà ÷àñòîòà: " << processor.getClockSpeed() << " ÃÃö" << endl;
+        outFile << "Ð†Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ñ–Ñ Ð¿Ñ€Ð¾ Ð¿Ñ€Ð¾Ñ†ÐµÑÐ¾Ñ€:" << endl;
+        outFile << "ÐœÐ¾Ð´ÐµÐ»ÑŒ: " << processor.getModel() << ", Ð¦Ñ–Ð½Ð°: " << processor.getPrice() << " Ð³Ñ€Ð½, Ð‘Ñ€ÐµÐ½Ð´: " << processor.getBrand() << ", Ð¢Ð°ÐºÑ‚Ð¾Ð²Ð° Ñ‡Ð°ÑÑ‚Ð¾Ñ‚Ð°: " << processor.getClockSpeed() << " Ð“Ð“Ñ†" << endl;
 
-        outFile << "²íôîðìàö³ÿ ïðî æîðñòêèé äèñê:" << endl;
-        outFile << "Ìîäåëü: " << hardDisk.getModel() << ", Ö³íà: " << hardDisk.getPrice() << " ãðí, Îáñÿã: " << hardDisk.getCapacity() << " Ãáàéò" << endl;
+        outFile << "Ð†Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ñ–Ñ Ð¿Ñ€Ð¾ Ð¶Ð¾Ñ€ÑÑ‚ÐºÐ¸Ð¹ Ð´Ð¸ÑÐº:" << endl;
+        outFile << "ÐœÐ¾Ð´ÐµÐ»ÑŒ: " << hardDisk.getModel() << ", Ð¦Ñ–Ð½Ð°: " << hardDisk.getPrice() << " Ð³Ñ€Ð½, ÐžÐ±ÑÑÐ³: " << hardDisk.getCapacity() << " Ð“Ð±Ð°Ð¹Ñ‚" << endl;
 
         outFile.close();
-        cout << "²íôîðìàö³ÿ çàïèñàíà â ôàéë computer_info.txt" << endl;
+        cout << "Ð†Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ñ–Ñ Ð·Ð°Ð¿Ð¸ÑÐ°Ð½Ð° Ð² Ñ„Ð°Ð¹Ð» computer_info.txt" << endl;
     }
     else {
-        cout << "Ïîìèëêà â³äêðèòòÿ ôàéëó!" << endl;
+        cout << "ÐŸÐ¾Ð¼Ð¸Ð»ÐºÐ° Ð²Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ñ‚Ñ Ñ„Ð°Ð¹Ð»Ñƒ!" << endl;
     }
 
     return 0;
