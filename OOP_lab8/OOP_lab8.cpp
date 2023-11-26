@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <numeric>
@@ -10,31 +10,31 @@ int main() {
     setlocale(LC_ALL, "ukr");
 
     int n;
-    cout << "Ââåäiòü ðîçìið ìàñèâó: ";
+    cout << "Ð’Ð²ÐµÐ´iÑ‚ÑŒ Ñ€Ð¾Ð·Ð¼iÑ€ Ð¼Ð°ÑÐ¸Ð²Ñƒ: ";
     cin >> n;
 
     vector<int> arr(n);
-    cout << "Ââåäiòü åëåìåíòè ìàñèâó: ";
+    cout << "Ð’Ð²ÐµÐ´iÑ‚ÑŒ ÐµÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¸ Ð¼Ð°ÑÐ¸Ð²Ñƒ: ";
     for (int i = 0; i < n; ++i) {
         cin >> arr[i];
     }
 
     int maxElement = *max_element(arr.begin(), arr.end());
-    cout << "Ìàêñèìàëüíèé åëåìåíò ìàñèâó: " << maxElement << endl;
+    cout << "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¸Ð¹ ÐµÐ»ÐµÐ¼ÐµÐ½Ñ‚ Ð¼Ð°ÑÐ¸Ð²Ñƒ: " << maxElement << endl;
 
     auto lastPositive = find_if(arr.rbegin(), arr.rend(), [](int x) { return x > 0; });
     int sumBeforeLastPositive = accumulate(arr.begin(), lastPositive.base(), 0);
-    cout << "Ñóìà åëåìåíòiâ äî îñòàííüîãî äîäàòíüîãî åëåìåíòà: " << sumBeforeLastPositive << endl;
+    cout << "Ð¡ÑƒÐ¼Ð° ÐµÐ»ÐµÐ¼ÐµÐ½Ñ‚iÐ² Ð´Ð¾ Ð¾ÑÑ‚Ð°Ð½Ð½ÑŒÐ¾Ð³Ð¾ Ð´Ð¾Ð´Ð°Ñ‚Ð½ÑŒÐ¾Ð³Ð¾ ÐµÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°: " << sumBeforeLastPositive << endl;
 
     int a, b;
-    cout << "Ââåäiòü iíòåðâàë [a, b]: ";
+    cout << "Ð’Ð²ÐµÐ´iÑ‚ÑŒ iÐ½Ñ‚ÐµÑ€Ð²Ð°Ð» [a, b]: ";
     cin >> a >> b;
 
     arr.erase(remove_if(arr.begin(), arr.end(), [a, b](int x) { return abs(x) >= a && abs(x) <= b; }), arr.end());
 
     arr.resize(n, 0);
 
-    cout << "Îíîâëåíèé ìàñèâ: ";
+    cout << "ÐžÐ½Ð¾Ð²Ð»ÐµÐ½Ð¸Ð¹ Ð¼Ð°ÑÐ¸Ð²: ";
     for (int i : arr) {
         cout << i << " ";
     }
