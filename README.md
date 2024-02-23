@@ -18,6 +18,6 @@ Errors due to incorrectly entered data
 
 ![image](https://github.com/hahanzo/OOP/assets/110280756/124815d0-b446-467c-8ebd-81c4de687ef3)
 
-Errors due to the given data
+Error due to missing data
 
 ![image](https://github.com/hahanzo/OOP/assets/110280756/dad68641-4501-4023-803b-27e344605f1a)
