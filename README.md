@@ -1,4 +1,5 @@
 Start window
+
 ![image](https://github.com/hahanzo/OOP/assets/110280756/a6660662-916f-48d4-af4a-7257e282179c)
 Creating a room object
 ![image](https://github.com/hahanzo/OOP/assets/110280756/9030373b-064d-44e9-b8d9-5af7835d5b37)
