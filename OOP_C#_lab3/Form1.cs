@@ -67,7 +67,7 @@ namespace OOP_C__lab3
                 {
 
                     BitString bs = new BitString(str);
-                    bs.ChangeSign();
+                    bs.GetTwosComplement();
 
                     textBox1.Text = bs.ToString();
 
@@ -101,7 +101,7 @@ namespace OOP_C__lab3
                 {
 
                     BitString bs = new BitString(str);
-                    bs.ChangeSign();
+                    bs.GetTwosComplement();
 
                     textBox2.Text = bs.ToString();
 
@@ -136,7 +136,7 @@ namespace OOP_C__lab3
                 {
 
                     BitString bs = new BitString(str);
-                    bs.ChangeSign();
+                    bs.GetTwosComplement();
 
                     textBox3.Text = bs.ToString();
 
