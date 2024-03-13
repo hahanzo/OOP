@@ -49,7 +49,14 @@ public class StringBase : ICloneable, IComparable<StringBase>
 
     public int CompareTo(StringBase other)
     {
-        return ToString().CompareTo(other.ToString());
+        if (other == null)
+            return 1;
+
+        StringBase otherStringBase = other as StringBase;
+        if (otherStringBase != null)
+            return ToString().CompareTo(other.ToString());
+        else
+            throw new ArgumentException("Object is not a StringBase");
     }
 }
 
@@ -144,21 +151,11 @@ public class BitString : StringBase, IComparable<BitString>, ISerializable
         if (other == null)
             return 1;
 
-        return this.ToDecimal().CompareTo(other.ToDecimal());
-    }
-
-    public bool Equals(BitString other)
-    {
-        if (length != other.GetLength())
-            return false;
-
-        for (int i = 0; i < length; i++)
-        {
-            if (characters[i] != other.characters[i])
-                return false;
-        }
-
-        return true;
+        BitString otherBitString = other as BitString;
+        if (otherBitString != null)
+            return ToString().CompareTo(other.ToString());
+        else
+            throw new ArgumentException("Object is not a BitString");
     }
 
     public void Serialize(string fileName)
