@@ -1,11 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Xml.Serialization;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 
 public interface ISerializable
 {
-    void Serialize(string fileName);
-    void Deserialize(string fileName);
+    void SerializeToTxt(string directoryPath, string fileName);
+    void DeserializeFromTxt(string filePath);
 }
 
 public class StringBase : ICloneable, IComparable<StringBase>
@@ -63,6 +66,11 @@ public class StringBase : ICloneable, IComparable<StringBase>
 public class BitString : StringBase, IComparable<BitString>, ISerializable
 {
     private bool isSigned;
+
+    public BitString()
+    { 
+        isSigned = false;
+    }
 
     public BitString(string str) : base(str)
     {
@@ -158,17 +166,27 @@ public class BitString : StringBase, IComparable<BitString>, ISerializable
             throw new ArgumentException("Object is not a BitString");
     }
 
-    public void Serialize(string fileName)
+    public void SerializeToTxt(string directoryPath, string fileName)
     {
-        string serializedString = this.ToString();
-        File.WriteAllText(fileName, serializedString);
+        string filePath = Path.Combine(directoryPath, fileName + ".txt");
+        using (StreamWriter writer = new StreamWriter(filePath))
+        {
+            writer.WriteLine(this.ToString()); // Write the BitString content to the text file
+        }
     }
 
-    public void Deserialize(string fileName)
+    public void DeserializeFromTxt(string filePath)
     {
-        string serializedString = File.ReadAllText(fileName);
-        this.characters = serializedString.ToCharArray();
-        this.length = (byte)this.characters.Length;
+        // Read the content of the text file
+        string content;
+        using (StreamReader reader = new StreamReader(filePath))
+        {
+            content = reader.ReadToEnd();
+        }
+
+        // Reconstruct the BitString object from the content
+        this.characters = content.ToCharArray();
+        this.length = (byte)content.Length;
     }
 
     public static BitString Add(BitString first, BitString second)
@@ -236,6 +254,8 @@ class Program
             Console.WriteLine(bitStr);
         }
 
+        Console.WriteLine("\nbitString1:" + bitStrings[0].ToString());
+        Console.WriteLine("bitString2:" + bitStrings[1].ToString());
         // Comparing the first two objects in the array
         int result = bitStrings[0].CompareTo(bitStrings[1]);
 
@@ -252,17 +272,19 @@ class Program
             Console.WriteLine("\nbitString1 is equal to bitString2");
         }
 
-        // Creating a new BitString object
-        BitString bitString = new BitString("00001111");
+        // Creating a BitString object
+        BitString bitString = new BitString("1010");
 
-        // Serializing and deserializing
-        string fileName = "serialized_bitstring.txt";
-        bitString.Serialize(fileName);
-        Console.WriteLine("\nBitString serialized to file " + fileName);
+        // Serialization to Txt
+        string txtDirectory = "C:\\Project\\OOP_C#_lab4\\data";
+        string txtFileName = "bitStringTxt";
+        bitString.SerializeToTxt(txtDirectory, txtFileName);
+        Console.WriteLine("\nBitString serialized to Txt file: " + Path.Combine(txtDirectory, txtFileName + ".txt"));
 
-        BitString deserializedBitString = new BitString("");
-        deserializedBitString.Deserialize(fileName);
-        Console.WriteLine("BitString deserialized from file: " + deserializedBitString);
+        // Deserialization from Txt
+        BitString deserializedBitStringFromTxt = new BitString();
+        deserializedBitStringFromTxt.DeserializeFromTxt(Path.Combine(txtDirectory, txtFileName + ".txt"));
+        Console.WriteLine("BitString deserialized from Txt file: " + deserializedBitStringFromTxt);
 
         BitString bitString1 = new BitString("0001",true);
         Console.WriteLine("\nBinary number:" + bitString1.ToString());
