@@ -50,10 +50,12 @@ namespace OOP_C__lab5
                 if (hashtableCheckBox.Checked)
                 {
                     bStringCollection = new BStringCollectionHashtable(size);
+                    MessageBox.Show("Hashtable created.");
                 }
                 else if (sortedListCheckBox.Checked)
                 {
                     bStringCollection = new BStringCollectionSortedList(size);
+                    MessageBox.Show("SortedList created.");
                 }
                 else
                 {
@@ -102,7 +104,7 @@ namespace OOP_C__lab5
         {
             try
             {
-                string input = textBox2.Text;
+                string input = textBox1.Text;
 
                 if (string.IsNullOrEmpty(input))
                     throw new ArgumentException("Please enter a valid bit string.");
