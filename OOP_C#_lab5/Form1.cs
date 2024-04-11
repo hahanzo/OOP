@@ -37,7 +37,6 @@ namespace OOP_C__lab5
                     throw new ArgumentException("Enter the size of collection.");
 
                 int size = 0;
-
                 if (Convert.ToInt32(collectionSizeTextBox.Text) > 0)
                 {
                     size = Convert.ToInt32(collectionSizeTextBox.Text);
@@ -64,6 +63,10 @@ namespace OOP_C__lab5
                 UpdateDataGridView(bStringCollection.GetCollection());
             }
             catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
